@@ -2,7 +2,7 @@
 #for creating control random data for the neutral model 
 
 
-#install.packages("MCMCpack")
+install.packages("MCMCpack")
 library(MCMCpack)
 #file names
 metadata_file<- "colonization.metadata.final2.txt"
@@ -48,8 +48,19 @@ colnames(full_gen) <- colnames(day1_abund)
 
 
 #need to reformat rownames so they match day ids to use in nm script 
-#then format output as shared file 
+#need to reformat rownames so they match day ids in metadata to use in nm script 
 
-#then use as input to model for control 
+full_gen_renamed <- rownames_to_column(full_gen, var="id")
+full_gen_renamed <- separate(full_gen_renamed, id, into=c("name", "day"), sep="_d", remove=TRUE)
+full_gen_renamed <- separate(full_gen_renamed, day, into=c("dayB","dayC"), sep="_", remove=TRUE)
+full_gen_renamed <- full_gen_renamed[-2]
+full_gen_renamed <- separate(full_gen_renamed, name, into="id", sep=".D01", remove=TRUE)
+full_gen_renamed$dayC <- as.numeric(full_gen_renamed$dayC)
+
+full_gen_renamed$dayC <- ifelse(full_gen_renamed$dayC < 10, paste("D0", full_gen_renamed$dayC, sep=""), paste("D", full_gen_renamed$dayC, sep=""))
+
+full_gen_renamed <- unite(full_gen_renamed, "sample_id", c(id, dayC), sep=".")
+rownames(full_gen_renamed) <- NULL 
+full_gen_renamed <- column_to_rownames(full_gen_renamed, var="sample_id")
 
 

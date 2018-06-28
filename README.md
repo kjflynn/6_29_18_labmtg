@@ -13,6 +13,8 @@ The rationale for this exercise is that I am guilty of using nested `for` loops 
 
 We'll do 10 minutes of intro, 20-25 minutes of coding and then 10-15 of sharing of our approaches. 
 
+If you finish lines 29-47 early, see if you can find a more efficient way to do 53-64!
+
 Groups:
 - Nick, Begum, Kaitlin 
 - Pat, Josh
