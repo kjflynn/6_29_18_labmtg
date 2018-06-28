@@ -16,6 +16,6 @@ We'll do 10 minutes of intro, 20-25 minutes of coding and then 10-15 of sharing 
 If you finish lines 29-47 early, see if you can find a more efficient way to do 53-64!
 
 Groups:
-- Nick, Begum, Kaitlin 
-- Pat, Josh
+- Nick, Begum, Mia  
+- Pat, Josh, Kaitlin
 - Ada, Will, Marcy 

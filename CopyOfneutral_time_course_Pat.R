@@ -33,7 +33,8 @@ generations <- 21
 strength <- 2400 #number of sequences, analogous to Ntm
 gen <- matrix(rep(0, generations*npops), ncol=npops)
 gen[1,] <- round(strength * init_distribution)	#set the initial frequencies 
-#loop through each day 
+
+#loop through each generation to create random distribution for each day
 for(i in 2:generations){
   gen[i,] <- round(rdirichlet(1, unlist(gen[i-1,]) )* strength)
   gen <- as.data.frame(gen)
@@ -47,7 +48,6 @@ full_gen <- full_gen[-1,]
 colnames(full_gen) <- colnames(day1_abund)
 
 
-#need to reformat rownames so they match day ids to use in nm script 
 #need to reformat rownames so they match day ids in metadata to use in nm script 
 
 full_gen_renamed <- rownames_to_column(full_gen, var="id")
